@@ -121,7 +121,7 @@ courseID char(7) not null,
 staffID char(8) not null,
 startDate date not null,
 endDate date not null,
-courseCompleted boolean not null,
+courseCompleted boolean not null, -- For verification purpose
 foreign key (studentID) references student(studentID),
 foreign key (courseID) references course(courseID),
 foreign key (staffID) references staff(staffID)
