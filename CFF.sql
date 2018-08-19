@@ -32,22 +32,6 @@ insert into Course values('CFWP407','',16,32,'Level 3');
 select * from course;
 
 
-create table Staff(
-staffID char(8) primary key not null,
-staffFirstName varchar(20) not null,
-staffLastName varchar(20) not null,
-staffRole varchar(30) not null
-)engine=InnoDB;
-
-
-INSERT INTO Staff VALUES(10810515,'Illana','Riley','Manager');
-INSERT INTO Staff VALUES(70401978,'Hakeem','Huffman','Team Leader');
-INSERT INTO Staff VALUES(93258280,'Anne','Britt','Assistant');
-INSERT INTO Staff VALUES(92099402,'Luke','Freeman','Assistant');
-INSERT INTO Staff VALUES(58995289,'Ross','Perry','Assistant');
-
-select * from staff;
-
 -- Student
 create table Student(
 studentID char(8) primary key not null,
@@ -114,33 +98,30 @@ select * from sessions;
 
 
 create table Enrolment(
--- create by first there odd characters of courseID and four even numbers of sutdentID 
 enrolmentID char(7) primary key not null,
 studentID char(8) not null,
 courseID char(7) not null,
-staffID char(8) not null,
 startDate date not null,
 endDate date not null,
 courseCompleted boolean not null, -- For verification purpose
 foreign key (studentID) references student(studentID),
-foreign key (courseID) references course(courseID),
-foreign key (staffID) references staff(staffID)
+foreign key (courseID) references course(courseID)
 )engine=InnoDB;
 
 -- student 92567137
-insert into Enrolment values('CC22617',92567137,'CFCB206',10810515,'2018-01-08','2018-09-21',false);
+insert into Enrolment values('CC22617',92567137,'CFCB206','2018-01-08','2018-09-21',false);
 -- student 39599171
-insert into Enrolment values('CC29911',39599171,'CFCB206',58995289,'2018-01-05','2018-09-16',false);
+insert into Enrolment values('CC29911',39599171,'CFCB206','2018-01-05','2018-09-16',false);
 -- student 98794054
-insert into Enrolment values('CC28904',98794054,'CFCB206',93258280,'2017-12-05','2018-05-16',true);
-insert into Enrolment values('CC18904',98794054,'CFCF106',10810515,'2017-12-22','2018-03-11',true);
-insert into Enrolment values('CD18904',98794054,'CFDT110',93258280,'2018-07-22','2018-11-11',false);
+insert into Enrolment values('CC28904',98794054,'CFCB206','2017-12-05','2018-05-16',true);
+insert into Enrolment values('CC18904',98794054,'CFCF106','2017-12-22','2018-03-11',true);
+insert into Enrolment values('CD18904',98794054,'CFDT110','2018-07-22','2018-11-11',false);
 -- student 50224035
-insert into Enrolment values('CD10205',50224035,'CFDT110',70401978,'2016-12-31','2017-09-22',false);
+insert into Enrolment values('CD10205',50224035,'CFDT110','2016-12-31','2017-09-22',false);
 -- student 68047593
-insert into Enrolment values('CH38453',68047593,'CFHM301',92099402,'2018-04-05','2018-10-03',false);
+insert into Enrolment values('CH38453',68047593,'CFHM301','2018-04-05','2018-10-03',false);
 -- student 78021184
-insert into Enrolment values('IT48214',78021184,'ITTL410',58995289,'2018-04-05','2018-09-03',false);
+insert into Enrolment values('IT48214',78021184,'ITTL410','2018-04-05','2018-09-03',false);
 
 
 select * from Enrolment;
