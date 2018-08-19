@@ -114,7 +114,7 @@ select * from sessions;
 
 
 create table Enrolment(
--- create by first there odd characters of courseID and even numbers of sutdentID 
+-- create by first there odd characters of courseID and four even numbers of sutdentID 
 enrolmentID char(7) primary key not null,
 studentID char(8) not null,
 courseID char(7) not null,
