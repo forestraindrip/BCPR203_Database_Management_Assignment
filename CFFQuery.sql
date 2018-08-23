@@ -1,28 +1,47 @@
--- Staff need to able to search for: Individual students 
-select * from student where studentID = 95224952;
+-- Search for a student whose ID is 98794054 and all courses he/she has enrolled.
+select concat_ws(', ',studentFirstName,studentLastName) as 'Student Name',
+courseName, courseCompleted
+from student, enrolment, course
+where student.studentID = 98794054 
+and student.studentID= enrolment.studentID
+and course.courseID = enrolment.courseID
+;
 
--- Search students in courses: CFCB206
-select * from enrolment where (courseID = 'CFCB206');
-select * from enrolment where courseID = 'CFCB206' and courseCompleted = false;
+-- Search students in the course: CFCB206
+select courseName,
+concat_ws(', ',studentFirstName,studentLastName) as 'Student Name'
+from enrolment, course, student
+where course.courseID = 'CFCB206'
+and course.courseID = enrolment.courseID
+and student.studentID = enrolment.studentID;
+
+-- Search students all courses and havent finished the courses
+select courseName,
+concat_ws(', ',studentFirstName,studentLastName) as 'Student Name'
+from enrolment, course, student
+where  course.courseID = enrolment.courseID
+and student.studentID = enrolment.studentID
+and  courseCompleted = false;
+
+-- Search students in courses CFCB206 and havent finished the course
+select courseName,
+concat_ws(', ',studentFirstName,studentLastName) as 'Student Name'
+from enrolment, course, student
+where course.courseID = 'CFCB206'
+and course.courseID = enrolment.courseID
+and student.studentID = enrolment.studentID
+and  courseCompleted = false;
 
 -- Search students at Omaru branch between 10~12 2018-08-02
-select * from student where studentID in(
-	select studentID from enrolment where enrolmentID in
-		(select enrolmentID
-		from attendance 
-		where sessionID = 'O18080210'
-		)
-);
-
--- check whether an attendance has a booking
-select * from booking where (enrolmentID,sessionID) in(
-select enrolmentID, sessionID
-from attendance
-where enrolmentID = 'CC22617' && sessionID='O18080210');
-
--- check whether a booking has an attendance
-select * from attendance where (enrolmentID,sessionID) in(
-select enrolmentID,sessionID
-from booking 
-where bookingNum =560407);
-
+select branchName,
+concat_ws(', ',studentFirstName,studentLastName) as 'Student Name',
+attendanceStartTime,
+attendanceEndTime
+from branch, student, sessions, attendance, enrolment
+where branchName = 'Oamaru'
+and branch.branchID = sessions.branchID
+and sessions.sessionDate = '2018-08-02'
+and sessions.sessionStartTime = '10:00:00'
+and sessions.sessionID = attendance.sessionID
+and attendance.enrolmentID = enrolment.enrolmentID
+and enrolment.studentID = student.studentID;
