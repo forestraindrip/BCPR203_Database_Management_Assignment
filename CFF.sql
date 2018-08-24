@@ -194,6 +194,7 @@ insert into Attendance values('CC22617','O18080218','17:50:00','19:20:00');
 
 -- this attendance has no booking
 insert into attendance values('CFD8904','O18080210','10:00:00','12:20:00'); 
+insert into attendance values('CFD8904','O18080313','13:00:00','14:30:00'); 
 insert into attendance values('IT14023','O18080313','13:00:00','14:30:00'); 
 
 -- the student is still at the branch
