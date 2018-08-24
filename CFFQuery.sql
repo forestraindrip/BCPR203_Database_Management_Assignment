@@ -15,7 +15,7 @@ where course.courseID = 'CFCB206'
 and course.courseID = enrolment.courseID
 and student.studentID = enrolment.studentID;
 
--- Search students in courses CFCB206 and havent finished the course
+-- Search students in course CFCB206 and havent finished the course
 select courseName,
 concat_ws(', ',studentFirstName,studentLastName) as 'Student Name'
 from enrolment, course, student
@@ -34,6 +34,16 @@ and student.studentID = enrolment.studentID
 and course.courseID = enrolment.courseID
 group by enrolment.enrolmentID;
 
+-- Search attended session number of student (98794054)
+select concat_ws(', ',studentFirstName,studentLastName) as 'Student Name',
+course.courseName,
+count(sessionID)
+from attendance, enrolment, student, course
+where student.studentID = '98794054'
+and attendance.enrolmentID  = enrolment.enrolmentID
+and student.studentID = enrolment.studentID
+and course.courseID = enrolment.courseID
+group by course.courseID;
 
 -- Search students at Omaru branch between 10~12 2018-08-02
 select branchName,
