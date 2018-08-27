@@ -135,7 +135,7 @@ insert into Enrolment values('IT14023',14023288,'ITTL410','2018-04-05','2018-09-
 --
 insert into Enrolment values('IT61611',61611086,'ITTL410','2018-04-05','2018-09-03',false);
 --
-insert into Enrolment values('IT72528',72528668,'ITTL410','2018-04-05','2018-09-03',false);
+insert into Enrolment values('IT72528',72528668,'ITTL410','2018-08-05','2019-09-03',false);
 --
 insert into Enrolment values('IT34459',34459007,'ITTL410','2018-04-05','2018-09-03',false);
 --
@@ -173,6 +173,8 @@ insert into Booking VALUES(343434,'IT48214','O18080310','2018-08-01','02:59:59')
 insert into Booking values(991317,'CC18904','BR18082909','2018-07-26','13:09:59');
 insert into Booking values(212856,'CD10205','CT18081308','2018-07-21','03:59:59');
 insert into Booking values(458856,'IT61611','CT18081308','2018-07-21','04:59:59');
+insert into Booking values(454844,'IT72528','CT18081309','2018-07-30','23:59:59');
+
 
 
 
@@ -191,6 +193,7 @@ primary key (enrolmentID,sessionID)
 -- different attendances in the same enrolment 
 insert into Attendance values('CC22617','O18080210','09:50:00','10:20:00');
 insert into Attendance values('CC22617','O18080218','17:50:00','19:20:00');
+insert into Attendance values('CC22617','O18080310','10:10:00','12:00:00');
 
 -- this attendance has no booking
 insert into attendance values('CFD8904','O18080210','10:00:00','12:20:00'); 
